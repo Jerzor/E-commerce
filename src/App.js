@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { commerce } from "./lib/commerce";
-import { Navbar, Cart, Products } from "./components";
+import { Navbar, Cart, Products, Checkout } from "./components";
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -61,6 +61,17 @@ const App = () => {
       });
   };
 
+  const handleEmptyCart = () => {
+    commerce.cart
+      .empty()
+      .then((resp) => {
+        setCart(resp.cart);
+      })
+      .catch((error) => {
+        console.error("There was an error emptying the cart", error);
+      });
+  };
+
   return (
     <Router>
       <Navbar cartQnt={cart.line_items} />
@@ -73,7 +84,11 @@ const App = () => {
             cart={cart}
             handleUpdateCartQty={handleUpdateCartQty}
             handleRemoveFromCart={handleRemoveFromCart}
+            handleEmptyCart={handleEmptyCart}
           />
+        </Route>
+        <Route path="/checkout">
+          <Checkout cart={cart} />
         </Route>
       </Switch>
     </Router>
