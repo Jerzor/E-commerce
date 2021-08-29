@@ -11,7 +11,7 @@ import {
 
 const CartItem = ({ item, handleUpdateCartQty, handleRemoveFromCart }) => {
   return (
-    <Card key={item.id}>
+    <Card>
       <CardMedia
         component="img"
         alt={item.name}
@@ -21,13 +21,16 @@ const CartItem = ({ item, handleUpdateCartQty, handleRemoveFromCart }) => {
       />
       <CardActionArea>
         <CardContent>
-          <Typography gutterBottom variant="h6">
+          <Typography variant="h6" align="center">
             {item.name}
+          </Typography>
+          <Typography variant="h6" align="center">
+            {item.line_total.formatted_with_symbol}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex", alignItems: "center" }}>
           <Button
             type="button"
             size="small"
