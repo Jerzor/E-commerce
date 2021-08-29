@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@material-ui/core";
 
-const CardItem = ({ item, handleUpdateCartQty, handleRemoveFromCart }) => {
+const CartItem = ({ item, handleUpdateCartQty, handleRemoveFromCart }) => {
   return (
     <Card key={item.id}>
       <CardMedia
@@ -57,4 +57,4 @@ const CardItem = ({ item, handleUpdateCartQty, handleRemoveFromCart }) => {
   );
 };
 
-export default CardItem;
+export default CartItem;

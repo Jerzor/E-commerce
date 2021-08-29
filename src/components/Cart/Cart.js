@@ -1,18 +1,18 @@
 import { Container } from "@material-ui/core";
 import React from "react";
-import CartItem from "./CardItem/CardItem";
+import CartItem from "./CartItem/CartItem";
 
 const Cart = ({ cart, handleUpdateCartQty, handleRemoveFromCart }) => {
-  const cartItem = cart.line_items;
+  const cartItems = cart.line_items;
 
-  if (!cartItem)
+  if (!cartItems)
     return (
       <Container maxWidth="lg">
         <p>Loading...</p>
       </Container>
     );
 
-  if (cartItem.length > 0)
+  if (cartItems.length > 0)
     return (
       <Container
         maxWidth="lg"
@@ -22,7 +22,7 @@ const Cart = ({ cart, handleUpdateCartQty, handleRemoveFromCart }) => {
           gridGap: 20,
         }}
       >
-        {cartItem.map((item) => (
+        {cartItems.map((item) => (
           <CartItem
             item={item}
             key={item.name}
