@@ -12,7 +12,13 @@ import React from "react";
 const Product = ({ product, handleAddToCart }) => {
   return (
     <>
-      <Card>
+      <Card
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+        }}
+      >
         <CardMedia
           component="img"
           alt={product.name}
@@ -20,7 +26,7 @@ const Product = ({ product, handleAddToCart }) => {
           image={product.media.source}
           title={product.name}
         />
-        <CardActionArea>
+        <CardActionArea style={{ flexGrow: 1 }}>
           <CardContent>
             <Typography variant="h5" component="h2" gutterBottom>
               {product.name}
