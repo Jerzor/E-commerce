@@ -39,7 +39,7 @@ const Navbar = ({ cartQnt }) => {
                     <ShoppingCartIcon />
                   </Badge>
                 ) : (
-                  <Badge badgeContent={"0"} color="secondary">
+                  <Badge badgeContent={0} color="secondary">
                     <ShoppingCartIcon />
                   </Badge>
                 )}
