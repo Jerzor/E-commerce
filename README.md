@@ -5,7 +5,7 @@ Application created with CRA, uses:
 - `material-ui`
 - `react-hooks`
 
-## Preparation for download
+## Preparation for download (with npm)
 
 After download/clone repo use `npm install`.
 First thing first you have to do is create `.env` file.
@@ -13,4 +13,4 @@ Next paste `REACT_APP_CHEC_PUBLIC_KEY=` with your API_KEY from https://dashboard
 
 ## Run project
 
-Run the app in the development mode with command in CLI `npm start`.
+Run the app in the development mode with command `npm start`.
