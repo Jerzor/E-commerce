@@ -74,7 +74,7 @@ const App = () => {
 
   return (
     <Router>
-      <Navbar cartQnt={cart.line_items} />
+      <Navbar cartQnt={cart.total_items} />
       <Switch>
         <Route path="/" exact>
           <Products products={products} handleAddToCart={handleAddToCart} />

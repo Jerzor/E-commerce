@@ -37,7 +37,7 @@ const Navbar = ({ cartQnt }) => {
             <Link to="/cart" style={{ color: "inherit" }}>
               <IconButton color="inherit">
                 {cartQnt ? (
-                  <Badge badgeContent={cartQnt.length} color="secondary">
+                  <Badge badgeContent={cartQnt} color="secondary">
                     <ShoppingCartIcon />
                   </Badge>
                 ) : (
