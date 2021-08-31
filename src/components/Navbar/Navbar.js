@@ -29,11 +29,13 @@ const Navbar = ({ cartQnt }) => {
             <Link to="/">
               <img src={logo} alt="logo" style={{ width: 70 }} />
             </Link>
+
             <Typography variant="h6" style={{ marginLeft: 15, flexGrow: 1 }}>
               E-commerce
             </Typography>
-            <IconButton color="inherit">
-              <Link to="/cart" style={{ color: "inherit" }}>
+
+            <Link to="/cart" style={{ color: "inherit" }}>
+              <IconButton color="inherit">
                 {cartQnt ? (
                   <Badge badgeContent={cartQnt.length} color="secondary">
                     <ShoppingCartIcon />
@@ -43,8 +45,8 @@ const Navbar = ({ cartQnt }) => {
                     <ShoppingCartIcon />
                   </Badge>
                 )}
-              </Link>
-            </IconButton>
+              </IconButton>
+            </Link>
           </Toolbar>
         </Container>
       </AppBar>
