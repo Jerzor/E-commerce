@@ -11,8 +11,6 @@ const Cart = ({
 }) => {
   const cartItems = cart.line_items;
 
-  console.log(cart);
-
   if (!cartItems)
     return (
       <Container maxWidth="lg">
