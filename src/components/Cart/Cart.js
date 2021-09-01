@@ -1,4 +1,9 @@
-import { Button, Container, Typography } from "@material-ui/core";
+import {
+  Button,
+  CircularProgress,
+  Container,
+  Typography,
+} from "@material-ui/core";
 import React from "react";
 import { Link } from "react-router-dom";
 import CartItem from "./CartItem/CartItem";
@@ -13,10 +18,16 @@ const Cart = ({
 
   if (!cartItems)
     return (
-      <Container maxWidth="lg">
-        <Typography variant="h5" align="center">
-          Loading...
-        </Typography>
+      <Container
+        maxWidth="lg"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "90vh",
+        }}
+      >
+        <CircularProgress size={80} />
       </Container>
     );
 

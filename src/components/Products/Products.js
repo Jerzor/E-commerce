@@ -1,15 +1,21 @@
 import React from "react";
-import { Container, Typography } from "@material-ui/core";
+import { CircularProgress, Container } from "@material-ui/core";
 
 import Product from "./Product/Product";
 
 const Products = ({ products, handleAddToCart }) => {
   if (!products.length)
     return (
-      <Container maxWidth="lg">
-        <Typography variant="h5" align="center">
-          Loading...
-        </Typography>
+      <Container
+        maxWidth="lg"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "90vh",
+        }}
+      >
+        <CircularProgress size={80} />
       </Container>
     );
 
