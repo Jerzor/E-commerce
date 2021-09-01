@@ -3,8 +3,8 @@ import { Card, CardContent, Paper, Typography } from "@material-ui/core";
 
 const RightItem = ({ cart }) => {
   return (
-    <Paper elevation={3}>
-      <Card>
+    <Paper elevation={3} style={{ width: "35%", height: "100%" }}>
+      <Card style={{ border: "none" }}>
         <CardContent>
           <Typography color="primary" variant="h5" gutterBottom>
             Order Summary
