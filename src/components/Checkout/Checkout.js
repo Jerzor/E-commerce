@@ -1,5 +1,5 @@
-import { Container } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
+import { CircularProgress, Container } from "@material-ui/core";
 
 import { commerce } from "../../lib/commerce";
 
@@ -25,16 +25,31 @@ const Checkout = ({ cart }) => {
 
   useEffect(() => {
     generateCheckoutToken();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  if (!cart.line_items)
+    return (
+      <Container
+        maxWidth="lg"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "90vh",
+        }}
+      >
+        <CircularProgress size={80} />
+      </Container>
+    );
 
   return (
     <Container
       maxWidth="lg"
-      style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: 30 }}
+      style={{ display: "flex", justifyContent: "space-evenly" }}
     >
-      <LeftItem />
-      {/* <RightItem cart={cart} /> */}
-      {console.log(checkoutToken)}
+      <LeftItem checkoutToken={checkoutToken} />
+      <RightItem cart={cart} />
     </Container>
   );
 };
