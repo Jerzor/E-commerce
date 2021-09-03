@@ -3,6 +3,43 @@ import { Button, Paper, Input, Typography } from "@material-ui/core";
 import { useForm, Controller } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+// ========== FORM VALIDATION ==========
+const thisYear = new Date().getFullYear();
+
+const schema = yup.object().shape({
+  firstName: yup.string().required(),
+  lastName: yup.string().required(),
+  email: yup.string().email().required(),
+
+  fullName: yup.string().required(),
+  streetAddress: yup.string().required(),
+  city: yup.string().required(),
+  zipCode: yup
+    .string()
+    .required()
+    .matches(/(\d\d-\d\d\d)/)
+    .max(6),
+  country: yup.string().required(),
+
+  creditCardNumber: yup.number().required().positive().integer(),
+  expiryMonth: yup.number().required().integer().min(1).max(12),
+  expiryYear: yup
+    .number()
+    .required()
+    .integer()
+    .min(thisYear)
+    .max(thisYear + 2),
+  ccv: yup
+    .string()
+    .required()
+    .matches(/(\d\d\d)/)
+    .max(3),
+});
+
+// ========== INPUTS ARRAYS ==========
 const customerInformationInputs = [
   { name: "firstName", placeholder: "First Name" },
   { name: "lastName", placeholder: "Last Name" },
@@ -13,7 +50,7 @@ const shippingDetailsInputs = [
   { name: "fullName", placeholder: "Full Name" },
   { name: "streetAddress", placeholder: "Street Address" },
   { name: "city", placeholder: "City" },
-  { name: "code", placeholder: "Postal/ZIP Code" },
+  { name: "zipCode", placeholder: "ZIP Code" },
   { name: "country", placeholder: "Country" },
 ];
 
@@ -29,9 +66,8 @@ const LeftItem = ({ checkoutToken }) => {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({ resolver: yupResolver(schema) });
 
-  console.log(checkoutToken);
   const history = useHistory();
   const onSubmit = () => {
     let path = `/checkout/${checkoutToken.id}`;
@@ -46,7 +82,6 @@ const LeftItem = ({ checkoutToken }) => {
             name={input.name}
             control={control}
             defaultValue=""
-            rules={{ required: true }}
             render={({ field }) => (
               <Input placeholder={input.placeholder} {...field} />
             )}
