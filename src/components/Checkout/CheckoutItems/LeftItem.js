@@ -70,7 +70,7 @@ const LeftItem = ({ checkoutToken }) => {
 
   const history = useHistory();
   const onSubmit = () => {
-    let path = `/checkout/${checkoutToken.id}`;
+    let path = `/checkout/token=${checkoutToken.id}`;
     history.push(path);
   };
 
