@@ -1,12 +1,11 @@
-import {
-  Button,
-  CircularProgress,
-  Container,
-  Typography,
-} from "@material-ui/core";
+import { CircularProgress, Container, Typography } from "@material-ui/core";
 import React from "react";
 import { Link } from "react-router-dom";
+
 import CartItem from "./CartItem/CartItem";
+
+import { StyledFlexContainer } from "../Products/ProductsStyles";
+import { DivGrid, DivFlex, StyledButton } from "./CartStyles";
 
 const Cart = ({
   cart,
@@ -18,33 +17,18 @@ const Cart = ({
 
   if (!cartItems)
     return (
-      <Container
-        maxWidth="lg"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "90vh",
-        }}
-      >
+      <StyledFlexContainer>
         <CircularProgress size={80} />
-      </Container>
+      </StyledFlexContainer>
     );
 
   if (cartItems.length > 0)
     return (
-      <Container maxWidth="lg">
+      <Container>
         <Typography variant="h4" gutterBottom>
           Your Shopping Cart
         </Typography>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gridGap: 20,
-            marginBottom: 50,
-          }}
-        >
+        <DivGrid>
           {cartItems.map((item) => (
             <CartItem
               item={item}
@@ -53,49 +37,35 @@ const Cart = ({
               handleRemoveFromCart={handleRemoveFromCart}
             />
           ))}
-        </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            marginBottom: 40,
-          }}
-        >
+        </DivGrid>
+        <DivFlex>
           <Typography variant="h4" gutterBottom>
             Subtotal: {cart.subtotal.formatted_with_symbol}
           </Typography>
-          <div
-            style={{
-              display: "flex",
-              width: 360,
-              justifyContent: "space-between",
-            }}
-          >
-            <Button
+          <DivFlex divWidth>
+            <StyledButton
               variant="contained"
               color="secondary"
               size="medium"
-              style={{ width: 170, height: 50 }}
               onClick={() => handleEmptyCart()}
             >
               Empty cart
-            </Button>
-            <Button
+            </StyledButton>
+            <StyledButton
               variant="contained"
               color="primary"
               size="medium"
-              style={{ width: 170, height: 50 }}
               component={Link}
               to="/checkout"
             >
               Checkout
-            </Button>
-          </div>
-        </div>
+            </StyledButton>
+          </DivFlex>
+        </DivFlex>
       </Container>
     );
   return (
-    <Container maxWidth="lg">
+    <Container>
       <Typography variant="h5" align="center">
         You have no items in your shopping cart, start adding some!
       </Typography>

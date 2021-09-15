@@ -1,10 +1,12 @@
 import React from "react";
-import { Button, Paper, Input, Typography } from "@material-ui/core";
+import { Button, Input, Typography } from "@material-ui/core";
 import { useForm, Controller } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+
+import { StyledForm, StyledPaper } from "../CheckoutStyles";
 
 // ========== FORM VALIDATION ==========
 const thisYear = new Date().getFullYear();
@@ -96,17 +98,8 @@ const LeftItem = ({ checkoutToken }) => {
     });
 
   return (
-    <Paper elevation={3} style={{ width: "45%" }}>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 15,
-          padding: 20,
-          width: "45%",
-        }}
-      >
+    <StyledPaper elevation={3}>
+      <StyledForm onSubmit={handleSubmit(onSubmit)}>
         <Typography variant="h6" color="primary">
           Customer information
         </Typography>
@@ -125,8 +118,8 @@ const LeftItem = ({ checkoutToken }) => {
         <Button variant="contained" color="primary" type="submit">
           Confirm Order
         </Button>
-      </form>
-    </Paper>
+      </StyledForm>
+    </StyledPaper>
   );
 };
 

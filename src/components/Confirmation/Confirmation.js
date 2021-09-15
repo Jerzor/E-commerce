@@ -1,6 +1,10 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { Button, Typography } from "@material-ui/core";
+import {
+  ConfirmationContainer,
+  StyledTypography,
+  StyledButton,
+} from "./ConfirmationStyles";
 
 const Confirmation = ({ handleEmptyCart }) => {
   const history = useHistory();
@@ -12,32 +16,15 @@ const Confirmation = ({ handleEmptyCart }) => {
   };
 
   return (
-    <div
-      style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        height: "100vh",
-        width: "100vw",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "rgba(0,0,0,0.2)",
-      }}
-    >
-      <Typography variant="h2" gutterBottom style={{ color: "#357a38" }}>
+    <ConfirmationContainer>
+      <StyledTypography variant="h2" gutterBottom>
         Payment accepted
-      </Typography>
+      </StyledTypography>
 
-      <Button
-        variant="contained"
-        onClick={confirm}
-        style={{ background: "#4caf50", color: "#fff" }}
-      >
+      <StyledButton variant="contained" onClick={confirm}>
         Back to shop
-      </Button>
-    </div>
+      </StyledButton>
+    </ConfirmationContainer>
   );
 };
 

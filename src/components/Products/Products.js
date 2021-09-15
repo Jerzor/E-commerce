@@ -1,34 +1,20 @@
 import React from "react";
-import { CircularProgress, Container } from "@material-ui/core";
+
+import { CircularProgress } from "@material-ui/core";
 
 import Product from "./Product/Product";
+import { StyledFlexContainer, StyledGridContainer } from "./ProductsStyles";
 
 const Products = ({ products, handleAddToCart }) => {
   if (!products.length)
     return (
-      <Container
-        maxWidth="lg"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "90vh",
-        }}
-      >
+      <StyledFlexContainer>
         <CircularProgress size={80} />
-      </Container>
+      </StyledFlexContainer>
     );
 
   return (
-    <Container
-      maxWidth="lg"
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(4, 1fr)",
-        gridGap: 20,
-        marginBottom: 30,
-      }}
-    >
+    <StyledGridContainer>
       {products.map((product) => (
         <Product
           key={product.id}
@@ -36,7 +22,7 @@ const Products = ({ products, handleAddToCart }) => {
           handleAddToCart={handleAddToCart}
         />
       ))}
-    </Container>
+    </StyledGridContainer>
   );
 };
 

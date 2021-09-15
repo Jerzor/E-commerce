@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { CircularProgress, Container } from "@material-ui/core";
+import { CircularProgress } from "@material-ui/core";
 
 import { commerce } from "../../lib/commerce";
 
 import LeftItem from "./CheckoutItems/LeftItem";
 import RightItem from "./CheckoutItems/RightItem";
+
+import { StyledFlexContainer } from "../Products/ProductsStyles";
+import { StyledContainer } from "./CheckoutStyles";
 
 const Checkout = ({ cart }) => {
   const [checkoutToken, setCheckoutToken] = useState({});
@@ -30,27 +33,16 @@ const Checkout = ({ cart }) => {
 
   if (!cart.line_items)
     return (
-      <Container
-        maxWidth="lg"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "90vh",
-        }}
-      >
+      <StyledFlexContainer>
         <CircularProgress size={80} />
-      </Container>
+      </StyledFlexContainer>
     );
 
   return (
-    <Container
-      maxWidth="lg"
-      style={{ display: "flex", justifyContent: "space-evenly" }}
-    >
+    <StyledContainer>
       <LeftItem checkoutToken={checkoutToken} />
       <RightItem cart={cart} />
-    </Container>
+    </StyledContainer>
   );
 };
 
