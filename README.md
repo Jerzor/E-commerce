@@ -4,6 +4,7 @@ Application created with CRA, uses:
 - `react-router-dom`
 - `material-ui`
 - `react-hook-form` and schema-based form validation with `yup`
+- `styled-components`
 - `react-hooks`
 
 ## Info about the construction of the application
