@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { CircularProgress } from "@material-ui/core";
+import { Redirect } from "react-router";
 
-import { commerce } from "../../lib/commerce";
+import { commerce } from "lib/commerce";
 
 import LeftItem from "./CheckoutItems/LeftItem";
 import RightItem from "./CheckoutItems/RightItem";
 
-import { StyledFlexContainer } from "../Products/ProductsStyles";
 import { StyledContainer } from "./CheckoutStyles";
 
 const Checkout = ({ cart }) => {
@@ -31,12 +30,19 @@ const Checkout = ({ cart }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (!cart.line_items)
-    return (
-      <StyledFlexContainer>
-        <CircularProgress size={80} />
-      </StyledFlexContainer>
-    );
+  if (!cart.line_items) {
+    if (
+      Object.keys(checkoutToken).length === 0 &&
+      checkoutToken.constructor === Object
+    )
+      return (
+        <Redirect
+          to={{
+            pathname: "/",
+          }}
+        />
+      );
+  }
 
   return (
     <StyledContainer>
