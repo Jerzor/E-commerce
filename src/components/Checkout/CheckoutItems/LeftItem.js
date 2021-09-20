@@ -26,7 +26,11 @@ const schema = yup.object().shape({
     .max(6),
   country: yup.string().required(),
 
-  creditCardNumber: yup.number().required().positive().integer(),
+  creditCardNumber: yup
+    .string()
+    .required()
+    .matches(/^(([\d]{16})|(([\d]{4})+\s?){4})$/)
+    .max(19),
   expiryMonth: yup.number().required().integer().min(1).max(12),
   expiryYear: yup
     .number()
