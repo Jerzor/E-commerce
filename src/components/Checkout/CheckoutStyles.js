@@ -36,14 +36,17 @@ export const StyledForm = styled.form`
 
 export const StyledPaper = withStyles({
   root: {
-    marginTop: 30,
     width: "80%",
+
+    "&:first-child": {
+      margin: "20px 0",
+    },
   },
 
   "@media (min-width: 750px)": {
     root: {
+      marginTop: 20,
       width: "45%",
-      marginTop: 0,
     },
   },
 
