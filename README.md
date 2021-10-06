@@ -25,3 +25,7 @@ Next paste `REACT_APP_CHEC_PUBLIC_KEY=` with your API_KEY from https://dashboard
 ## Run project
 
 Run the app in the development mode with command `npm start`.
+
+## Test runner
+
+Run the test mode in cli with command `npm run test`.
