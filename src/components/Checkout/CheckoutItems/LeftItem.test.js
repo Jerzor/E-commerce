@@ -3,7 +3,6 @@ import { render, fireEvent, act, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 import LeftItem from "./LeftItem";
-import { Confirmation } from "components/index";
 
 //TypeError: Cannot read property 'history' of undefined.
 //I had to mock useHistory hook in jest
@@ -36,8 +35,7 @@ describe("LeftItem", () => {
     const mockSave = jest.fn();
 
     const { getByText, queryByText } = render(
-      <LeftItem checkoutToken={mockSave} />,
-      <Confirmation />
+      <LeftItem checkoutToken={mockSave} />
     );
 
     await act(async () => {
