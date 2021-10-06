@@ -1,40 +1,30 @@
 import React from "react";
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  IconButton,
-  Container,
-  Badge,
-} from "@material-ui/core";
+import { IconButton, Container, Badge } from "@material-ui/core";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { Link } from "react-router-dom";
+import {
+  StyledToolbar,
+  StyledAppBar,
+  StyledImg,
+  StyledTypography,
+  StyledLink,
+} from "./NavbarStyles";
 
 import logo from "assets/logo.svg";
 
 const Navbar = ({ cartQnt }) => {
   return (
     <>
-      <AppBar position="sticky" style={{ marginBottom: 25 }}>
+      <StyledAppBar position="sticky">
         <Container maxWidth="lg">
-          <Toolbar
-            style={{
-              display: "flex",
-              width: "100%",
-              alignItems: "center",
-              color: "#fff",
-              textDecoration: "none",
-            }}
-          >
+          <StyledToolbar>
             <Link to="/">
-              <img src={logo} alt="logo" style={{ width: 70 }} />
+              <StyledImg src={logo} alt="logo" />
             </Link>
 
-            <Typography variant="h6" style={{ marginLeft: 15, flexGrow: 1 }}>
-              E-commerce
-            </Typography>
+            <StyledTypography variant="h6">E-commerce</StyledTypography>
 
-            <Link to="/cart" style={{ color: "inherit" }}>
+            <StyledLink to="/cart">
               <IconButton color="inherit">
                 {cartQnt ? (
                   <Badge badgeContent={cartQnt} color="secondary">
@@ -46,10 +36,10 @@ const Navbar = ({ cartQnt }) => {
                   </Badge>
                 )}
               </IconButton>
-            </Link>
-          </Toolbar>
+            </StyledLink>
+          </StyledToolbar>
         </Container>
-      </AppBar>
+      </StyledAppBar>
     </>
   );
 };

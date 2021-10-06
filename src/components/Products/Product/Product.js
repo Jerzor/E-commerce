@@ -1,24 +1,20 @@
 import {
-  Button,
-  Card,
-  CardActionArea,
   CardActions,
   CardContent,
   CardMedia,
   Typography,
 } from "@material-ui/core";
 import React from "react";
+import {
+  StyledCard,
+  StyledCardActionArea,
+  StyledButton,
+} from "./ProductStyles";
 
 const Product = ({ product, handleAddToCart }) => {
   return (
     <>
-      <Card
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-        }}
-      >
+      <StyledCard>
         <CardMedia
           component="img"
           alt={product.name}
@@ -26,7 +22,7 @@ const Product = ({ product, handleAddToCart }) => {
           image={product.media.source}
           title={product.name}
         />
-        <CardActionArea style={{ flexGrow: 1 }}>
+        <StyledCardActionArea>
           <CardContent>
             <Typography variant="h5" component="h2" gutterBottom>
               {product.name}
@@ -41,19 +37,18 @@ const Product = ({ product, handleAddToCart }) => {
               {product.price.formatted_with_symbol}
             </Typography>
           </CardContent>
-        </CardActionArea>
+        </StyledCardActionArea>
         <CardActions>
-          <Button
+          <StyledButton
             size="medium"
             color="primary"
             variant="contained"
-            style={{ margin: "0 auto" }}
             onClick={() => handleAddToCart(product.id)}
           >
             Add to cart
-          </Button>
+          </StyledButton>
         </CardActions>
-      </Card>
+      </StyledCard>
     </>
   );
 };

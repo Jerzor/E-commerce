@@ -8,6 +8,7 @@ import {
   CardMedia,
   Typography,
 } from "@material-ui/core";
+import { StyledDiv } from "./CartItemStyles";
 
 const CartItem = ({ item, handleUpdateCartQty, handleRemoveFromCart }) => {
   return (
@@ -30,7 +31,7 @@ const CartItem = ({ item, handleUpdateCartQty, handleRemoveFromCart }) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <StyledDiv>
           <Button
             type="button"
             size="small"
@@ -46,7 +47,7 @@ const CartItem = ({ item, handleUpdateCartQty, handleRemoveFromCart }) => {
           >
             +
           </Button>
-        </div>
+        </StyledDiv>
         <Button
           variant="contained"
           type="button"

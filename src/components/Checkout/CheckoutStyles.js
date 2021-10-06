@@ -1,5 +1,6 @@
-import { Container, Paper } from "@material-ui/core";
+import { Container, Paper, Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/styles";
+
 import styled from "styled-components";
 
 export const StyledContainer = withStyles({
@@ -61,3 +62,38 @@ export const StyledPaper = withStyles({
     },
   },
 })(Paper);
+
+export const StyledItemMenu = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0;
+
+  @media (min-width: 500px) {
+    flex-direction: row;
+  }
+  @media (min-width: 750px) {
+    flex-direction: column;
+  }
+  @media (min-width: 900px) {
+    flex-direction: row;
+  }
+`;
+
+export const StyledTypography = styled(Typography)`
+  @media (min-width: 500px) {
+    margin-left: auto !important;
+  }
+  @media (min-width: 750px) {
+    margin-left: 0 !important;
+  }
+  @media (min-width: 900px) {
+    margin-left: auto !important;
+  }
+`;
+
+export const StyledImg = styled.img`
+  width: 60px;
+  height: 60px;
+  margin-right: 15px;
+`;
